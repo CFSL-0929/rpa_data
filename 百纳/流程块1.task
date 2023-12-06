@@ -1,0 +1,10 @@
+Log.Info "进入" & $Block.Description
+Dim iPID = ""
+//最大重试次数
+maxtry =5
+//充值录入已重试次数
+czlr=0
+//消费录入已重试次数
+xflr=0
+
+

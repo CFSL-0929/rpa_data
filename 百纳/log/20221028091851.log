@@ -1,0 +1,8 @@
+[2022/10/28 9:18:51][INFO][][0] 工作路径已切换到 d:\rpa机器人\百纳\
+[2022/10/28 9:18:51][INFO][流程块4.task][0] 流程 流程块4.task 开始运行
+[2022/10/28 9:18:51][INFO][流程块4.task][1] 
+[2022/10/28 9:19:01][ERROR][流程块4.task][12] 运行发生错误，流程中止
+错误信息如下：
+流程块4.task 第12行：模块 Window.Window.SetActive 命令出错：Exception has been thrown by the target of an invocation.
+无法找到窗口
+[2022/10/28 9:19:01][INFO][流程块4.task][0] 流程块4.task 运行已结束

@@ -1,0 +1,133 @@
+log.info $Block.Description
+Dim table = ""
+Dim iRet = ""
+Dim objDatab = ""
+Dim yxtime = ""
+Dim sTime = ""
+
+sTime = Time.Now()
+sTime = Time.Format(sTime,"hh:mm:ss")
+yxtime = "18:00:00"
+TracePrint (sTime>yxtime)
+If sTime>yxtime
+Dim objDatabase = ""
+#icon("@res:bsm0dd22-m8kt-hjku-hh1v-pprqoav5rl7t.png")
+Window.SetActive({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统V2[百纳餐饮]----加密狗编号:277680 站点:1","app":"bysoft"}]})
+Dim bRet = ""
+Dim objDatatable = ""
+Dim arrayColumns = ""
+Dim arrayRet = ""
+Dim arrRet = ""
+Dim head = ""
+Dim objRet = ""
+Dim name = ""
+Dim huiyuan = ""
+Dim objExcelWorkBook = ""
+Dim today = ""
+Dim dTime = ""
+#icon("@res:g79geb93-s4qq-6fc4-sas7-iub1rkgb4kne.png")
+Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"g79geb93-s4qq-6fc4-sas7-iub1rkgb4kne.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+#icon("@res:809n7ica-u86f-sfjk-t86t-8222k7vv212f.png")
+Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"809n7ica-u86f-sfjk-t86t-8222k7vv212f.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+dTime = Time.Date()
+today = Time.Format(dTime,"yyyy-mm-dd")
+objExcelWorkBook = Excel.OpenExcel('''D:\储值消费表\'''&today&'''储值卡消费记录明细表（集团）.xls''',False,"Excel","","")
+//objExcelWorkBook = Excel.BindBook(today&"储值卡消费记录明细表（集团）.xls")
+//objExcelWorkBook = Excel.OpenExcel('''D:\储值消费表\2022-10-31储值卡消费记录明细表（集团）.xls''',True,"Excel","","")
+name = Excel.CurrentSheet(objExcelWorkBook,True)
+objRet = Excel.Find(objExcelWorkBook,name,"A1","卡号",False,False)
+head = Excel.ReadRow(objExcelWorkBook,name,objRet,True)
+arrRet = Unshift(head,"")
+arrayRet = Excel.ReadRange(objExcelWorkBook,name,"a8",False)
+
+For i=0 To UBound(head )
+	If head[i]=""
+		head[i]=cstr(i)
+	End If
+Next
+objDatatable = Datatable.BuildDataTable(arrayRet,head)
+objDatatable = Datatable.QueryDataTable(objDatatable,"~卡号.str.contains(\"酒店\") and 卡号!=\"\" and 卡号!=\"　\"")
+arrayColumns = Datatable.GetColumns(objDatatable)
+
+// objDatatable = Datatable.SelectDataTableColumns(objDatatable,[arrayColumns[1],arrayColumns[8],arrayColumns[9]])
+
+objDatatable = Datatable.SelectDataTableColumns(objDatatable,["卡号","消费"])
+objDatatable = Datatable.GetDataTableByArray(objDatatable,False)
+objDatab = Database.CreateDB("Sqlite3",{"filepath":@res"1.db"})
+iRet = Database.ExecuteSQL(objDatab ,"DROP TABLE IF EXISTS xiaofei", {"args":[]})
+table = Database.ExecuteSQL(objDatab ,"CREATE TABLE xiaofei (vipnum string,money int);", {"args":[]})
+For Each value In objDatatable
+	value[1]=cint(value[1])
+	iRet = Database.ExecuteSQL(objDatab ,"insert into xiaofei (vipnum,money) values (?,?)", {"args":value})	
+Next
+objDatatable = Database.QueryAll(objDatab ,"select vipnum ,sum(money) from xiaofei group by vipnum" ,{"rdict":false,"args":[]})
+
+
+For Each value In objDatatable
+	objDatabase = Database.CreateDB("SQLServer",{"host":"PC-20210819OBAW","port":"1433","user":"sa","password":"X6hczx5xsOEc6giKmM2N7Q==","database":"byvipv2","charset":"utf8"})
+	m="select isnull(max(svipcode),0) from [dbo].[t_bt_vip_info] where svipcode like \'"&CStr(value[0])&"%"&"\'"
+	a="select dcczkmoney from [dbo].[t_bt_vip_info] where svipcode = (select max(svipcode) from [dbo].[t_bt_vip_info] where svipcode like \'"&CStr(value[0])&"%"&"\')"
+	mnum = Database.QueryOne(objDatabase ,m, {"rdict":False,"args":[]})
+	Log.Info mnum
+	
+	If mnum[0]<>"0"
+		lmoney = Database.QueryOne(objDatabase ,a, {"rdict":False,"args":[]})
+		Log.info lmoney
+		bucha = cnumber(value[1])-CNumber(lmoney[0])
+		If bucha<=0
+			#icon("@res:q6k379au-182v-ccfs-fs5h-roggsc7urerd.png")
+			Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储卡快速消费"},{"cls":"Edit","ctrlid":1018,"idx":2}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},mnum[0],True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+			
+			Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})	
+			#icon("@res:mkckup22-e0ic-ccjd-667b-orfj9t6b3qv0.png")
+			Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储卡快速消费"},{"cls":"Edit","ctrlid":1014,"idx":1}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},value[1],True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+			#icon("@res:k8l8og9k-pc37-5djn-oggt-j2firiv95elc.png")
+			Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储卡快速消费"},{"cls":"Button","title":"确定","ctrlid":1020,"aaname":"确定"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+			Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		End If 
+		index=cint((bucha+500)/1000)
+       
+		yve=bucha-1000*(index-1)
+		
+		For i=1 To index
+			mnum1 = Database.QueryOne(objDatabase ,m, {"rdict":False,"args":[]})
+			Log.info mnum1[0]="0"
+			If mnum1[0]="0"
+				Break
+			End If
+			c="delete from [dbo].[t_bt_vip_info] where svipcode = \'"&CStr(mnum1[0])&"\'"
+			
+			If i=index
+				
+				#icon("@res:q6k379au-182v-ccfs-fs5h-roggsc7urerd.png")
+				Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储卡快速消费"},{"cls":"Edit","ctrlid":1018,"idx":2}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},mnum1[0],True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+				
+				Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})	
+				#icon("@res:mkckup22-e0ic-ccjd-667b-orfj9t6b3qv0.png")
+				Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储卡快速消费"},{"cls":"Edit","ctrlid":1014,"idx":1}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},yve,True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+				#icon("@res:k8l8og9k-pc37-5djn-oggt-j2firiv95elc.png")
+				Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储卡快速消费"},{"cls":"Button","title":"确定","ctrlid":1020,"aaname":"确定"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+				Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+				
+			Else 
+				#icon("@res:q6k379au-182v-ccfs-fs5h-roggsc7urerd.png")
+				Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储卡快速消费"},{"cls":"Edit","ctrlid":1018,"idx":2}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},mnum1[0],True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+				
+				Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})	
+				#icon("@res:mkckup22-e0ic-ccjd-667b-orfj9t6b3qv0.png")
+				Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储卡快速消费"},{"cls":"Edit","ctrlid":1014,"idx":1}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},1000,True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+				#icon("@res:k8l8og9k-pc37-5djn-oggt-j2firiv95elc.png")
+				Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储卡快速消费"},{"cls":"Button","title":"确定","ctrlid":1020,"aaname":"确定"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+				Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+				iRet = Database.ExecuteSQL(objDatabase ,c, {"args":[]})
+			End If
+			
+		Next
+		
+	End If 
+Next
+Keyboard.Press("Esc", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+Excel.CloseExcel(objExcelWorkBook,True)
+
+End If 
+App.Kill("bysoft.exe")

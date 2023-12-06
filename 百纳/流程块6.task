@@ -1,0 +1,42 @@
+Log.Info $Block.Description
+Dim iRet = ""
+objDatabase = Database.CreateDB("SQLServer",{"host":"PC-20210819OBAW","port":"1433","user":"sa","password":"X6hczx5xsOEc6giKmM2N7Q==","database":"byvipv2","charset":"utf8"})
+b="delete from [dbo].[t_bt_vip_info] where dcczkmoney <= 0"
+iRet = Database.ExecuteSQL(objDatabase ,b, {"args":[]})
+
+
+
+
+// dsvip = Database.QueryAll(objDatabase ,"select svipcode,dcczkmoney from [dbo].[t_bt_vip_info] where dcczkmoney <0", {"rdict":False,"args":[]})
+
+// For Each value  In dsvip
+// 	// objDatabase = Database.CreateDB("SQLServer",{"host":"PC-20210819OBAW","port":"1433","user":"sa","password":"X6hczx5xsOEc6giKmM2N7Q==","database":"byvipv2","charset":"utf8"})
+// 	// value =["956579","-56997.00"]
+// 	da ="select dcczkmoney from [dbo].[t_bt_vip_info] where svipcode = (select max(svipcode) from [dbo].[t_bt_vip_info] where svipcode like \'"&CStr(value[0])&"%"&"\')"
+// 	lmoney = Database.QueryOne(objDatabase ,da, {"rdict":False,"args":[]})
+// 	log.info lmoney
+// 	dindex =Math.Abs(CInt((CNumber(value[1])+CNumber(lmoney)-500)/1000))
+// 	Log.info dindex
+// 	a="select max(svipcode) from [dbo].[t_bt_vip_info] where svipcode like \'"&CStr(value[0])&"%"&"\'"
+// 	index = Database.QueryOne(objDatabase ,a, {"rdict":False,"args":[]})
+// 	Log.info index
+// 	index = Split(index[0],"-")  
+// 	index=cint(index[1])
+// 	Log.info index
+// 	For i=0 To (dindex-1)  
+// 		delnum = Database.QueryOne(objDatabase ,a, {"rdict":False,"args":[]})
+// 		del = "delete from  [dbo].[t_bt_vip_info]  where svipcode =(select max(svipcode) from [dbo].[t_bt_vip_info] where svipcode like \'"&CStr(value[0])&"%"&"\')"
+// 		iRet = Database.ExecuteSQL(objDatabase ,del, {"args":[]})
+// 		Log.info iRet
+// 	Next
+	
+// 	yve = cint(CNumber(value[1])+CNumber(lmoney[0])+1000*(dindex-1))
+	
+// 	Log.info yve
+// 	upa = "update [dbo].[t_bt_vip_info]  set dcczkmoney ="&yve&" where svipcode =\'"&CStr(value[0])&"\'"
+// 	iRet = Database.ExecuteSQL(objDatabase ,upa, {"args":[]})
+	
+// Next
+
+
+

@@ -1,0 +1,20 @@
+
+Dim sRet = ""
+Dim iRet = ""
+sRet = File.Read('''C:\Users\Administrator\Desktop\1.txt''',"gbk")
+
+For i=1 To 408 
+	value = StrGetAt(sRet,i)
+    index1= 2*i-1
+    a1=CStr(index1)&"="&value&"先生" &"\n"
+	File.Append('''C:\Users\Administrator\Desktop\新建文本文档.txt''',a1,"gbk")
+    index2= 2*i
+    a2=CStr(index2)&"="&value&"女士" &"\n"
+    File.Append('''C:\Users\Administrator\Desktop\新建文本文档.txt''',a2,"gbk")
+Next
+dRet = cint(816*Rnd())
+
+
+TracePrint($PrevResult)
+
+

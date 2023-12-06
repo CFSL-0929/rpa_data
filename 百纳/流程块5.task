@@ -1,0 +1,4 @@
+log.info "进入" & $Block.Description
+xflr=xflr+1
+log.info "离开" & $Block.Description
+

@@ -1,0 +1,7 @@
+[2022/9/27 9:38:56][INFO][][0] 工作路径已切换到 d:\rpa机器人\百纳\
+[2022/9/27 9:38:56][INFO][选中的内容][0] 流程 选中的内容 开始运行
+[2022/9/27 9:39:07][ERROR][选中的内容][1] 运行发生错误，流程中止
+错误信息如下：
+选中的内容 第1行：模块 Mouse.MouseAuto.Action 命令出错：Exception has been thrown by the target of an invocation.
+Exception in Mouse.Action,元素未找到
+[2022/9/27 9:39:07][INFO][选中的内容][0] 选中的内容 运行已结束

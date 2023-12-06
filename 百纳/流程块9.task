@@ -1,0 +1,6 @@
+Log.Info $Block.Description
+Dim iRet = ""
+objDatabase = Database.CreateDB("SQLServer",{"host":"PC-20210819OBAW","port":"1433","user":"sa","password":"X6hczx5xsOEc6giKmM2N7Q==","database":"byvipv2","charset":"utf8"})
+b="delete from [dbo].[t_bt_vip_info] where dcczkmoney <= 0"
+iRet = Database.ExecuteSQL(objDatabase ,b, {"args":[]})
+

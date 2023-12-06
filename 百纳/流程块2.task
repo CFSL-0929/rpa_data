@@ -1,0 +1,112 @@
+
+Dim today = ""
+Dim dTime = ""
+Dim objPoint = ""
+Dim bRet = ""
+Dim iPID = ""
+Dim sRet = ""
+log.info "进入" & $Block.Description
+App.Kill("iGroup.exe")
+zhanghao = INI.Read(@res"config\\config.ini", "绿云", "账号", "")
+TracePrint($PrevResult)
+mima = INI.Read(@res"config\\config.ini", "绿云", "密码", "")
+TracePrint($PrevResult)
+dTime = Time.Now()
+today = Time.Format(dTime,"yyyy-mm-dd")
+bRet = File.FileExists('''D:\储值消费表\'''&today&'''储值卡充值记录明细表（集团）.xls''')
+If bRet
+	File.DeleteFile('''D:\储值消费表\'''&today&'''储值卡充值记录明细表（集团）.xls''')  
+End If
+bRet = File.FileExists('''D:\储值消费表\'''&today&'''储值卡消费记录明细表（集团）.xls''')
+If bRet
+	File.DeleteFile('''D:\储值消费表\'''&today&'''储值卡消费记录明细表（集团）.xls''')  
+End If
+iPID = App.Run('''C:\Program Files (x86)\greencloud\iGroup\iGroup.exe''', "0", "1")
+
+Clipboard.SetText(zhanghao)
+#icon("@res:qa8ejgdc-diov-54mm-aueg-ppbdsb6hpp44.png")
+Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"cid":50020,"name":"用户名"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+Keyboard.Press("A", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+Keyboard.Press("Backspace", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+Keyboard.Press("V", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+Clipboard.SetText(mima)
+#icon("@res:j9fn4rk0-u6mk-pfmb-iqme-u3egbh90d9ku.png")
+Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"name":"密　码"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+Keyboard.Press("A", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+Keyboard.Press("Backspace", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+Keyboard.Press("V", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+#icon("@res:ab14fp6b-uruq-qlgh-dhur-8u2j9f7cbdve.png")
+Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"cid":50000,"name":"登录"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+Delay(15000)
+Try 
+	#icon("@res:4rgdmhkt-srtn-ff8n-gcm6-8b7f2b1rsc3r.png")
+	Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"cid":50000}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	
+Catch none
+End Try
+Delay(2000)
+#icon("@res:t9i88emi-hja5-m1bc-lac1-k9t04q47h2cu.png")
+Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"cid":50000,"idx":15}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+#icon("@res:inoqj2l1-7dnh-drla-tc2t-1nf7rm857mfl.png")
+Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"cid":50000,"name":"报表中心"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+
+// #icon("@res:d4lg0dm0-1oju-jq8f-jqa2-hahnnova808c.png")
+// Mouse.Hover({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"role":"ROLE_SYSTEM_CLIENT","name":"绿云iGroup平台"},{"role":"ROLE_SYSTEM_PUSHBUTTON","name":"房价查询"}]},10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+// objPoint=Mouse.GetPos()
+y=130 
+For i=0 To 1 
+	Mouse.Move(306, y, False,{"iDelayAfter":300,"iDelayBefore":200})
+	Delay(1000)
+	Mouse.Click("left", "click", [],{"iDelayAfter":300,"iDelayBefore":200})
+	Mouse.Click("left", "dbclick", [],{"iDelayAfter":300,"iDelayBefore":200})
+	Delay(1000)
+	#icon("@res:l978olki-hc8d-qoa2-s5fb-aamfvs5kmr40.png")
+	Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"cid":50004}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	#icon("@res:94l4rejj-2d6m-62o8-jooa-3sor2crprra4.png")
+	Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"cid":50000,"idx":1}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":False,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	// #icon("@res:m1hmqo9q-1tvt-5d5l-b6j1-ds06rijdmt6d.png")
+	// Mouse.Hover({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"role":"ROLE_SYSTEM_CLIENT","name":"绿云iGroup平台"},{"role":"ROLE_SYSTEM_LIST"}]},10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	// objPoint=Mouse.GetPos()
+	Mouse.Move(647, 320, False,{"iDelayAfter":300,"iDelayBefore":200})
+	Mouse.Click("left", "click", [],{"iDelayAfter":300,"iDelayBefore":200})
+	Mouse.Move(647, 340, False,{"iDelayAfter":300,"iDelayBefore":200})
+	Mouse.Click("left", "click", [],{"iDelayAfter":300,"iDelayBefore":200})
+	Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+	#icon("@res:u6falv66-vqvs-n90h-cgh9-qufmemd0bv3j.png")
+	Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"cid":50000,"name":"确定"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	Delay(3000)
+	#icon("@res:nhuq8j5e-kaq7-vim1-esc9-tnhpqa5cce0f.png")
+	Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"cid":50000,"name":"导出"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":False,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	Delay(1000)
+	Mouse.Move(0, 40, True,{"iDelayAfter":300,"iDelayBefore":200})
+	Mouse.Click("left", "click", [],{"iDelayAfter":300,"iDelayBefore":200})
+	#icon("@res:1kto9vuk-7gi6-s2q7-cj6b-8oh6n5v8tipu.png")
+	Mouse.Action({"wnd":[{"app":"iGroup","cls":"#32770","title":"选择要下载的位置自 app:/iGroup.swf"},{"cls":"WorkerW"},{"cls":"ReBarWindow32"},{"cls":"Address Band Root"},{"cls":"msctls_progress32"},{"cls":"Breadcrumb Parent"},{"cls":"ToolbarWindow32","title":"地址: D:\\储值消费表","ctrlid":1001,"aaname":"地址: D:\\储值消费表"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"TopRight","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	Keyboard.Input('''D:\储值消费表''',{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"message"})
+	Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+	#icon("@res:qjei4r4g-ed09-hpo8-j1h8-uf8l9se4houo.png")
+	Mouse.Action({"wnd":[{"app":"iGroup","cls":"#32770","title":"选择要下载的位置自 app:/iGroup.swf"},{"cls":"DUIViewWndClassName"},{"cls":"DirectUIHWND"},{"cls":"FloatNotifySink"},{"cls":"ComboBox","aaname":"文件名:"},{"cls":"Edit","ctrlid":1001,"aaname":"文件名:"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	Keyboard.Press("Home", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+	Keyboard.Input(today,{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"message"})
+	#icon("@res:m01i3jtu-iroa-2oc3-8rth-hmuq2tp2vib0.png")
+	Mouse.Action({"wnd":[{"app":"iGroup","cls":"#32770","title":"选择要下载的位置自 app:/iGroup.swf"},{"cls":"Button","title":"保存(&S)","ctrlid":1,"aaname":"保存(S)"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	Delay(1000)
+	Keyboard.Press("Esc", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+	y=150
+Next
+#icon("@res:kie73pek-5jkc-7fmj-u4bb-0mmvj8o5apkb.png")
+Mouse.Action({"wnd":[{"app":"iGroup","cls":"ApolloRuntimeContentWindow","title":"绿云iGroup平台"}],"ctrl":[{"cid":50000,"idx":14}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+Delay(2000)
+Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+
+log.info "离开" & $Block.Description
+
+
+
+
+
+
+
+
+
+

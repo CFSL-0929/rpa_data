@@ -1,0 +1,397 @@
+
+Dim str = ""
+Dim dTime = ""
+Dim arrayColumns = ""
+Dim item = ""
+Dim iRet = ""
+Dim objDatabase = ""
+Dim objSetRet = ""
+Dim bRet = ""
+Dim arrRet = ""
+Dim objRet = ""
+Dim arrayRet = ""
+Dim objExcelWorkBook = ""
+Dim sRet = ""
+Dim objDatatable = ""
+Dim iPID = ""
+
+log.info "进入" & $Block.Description
+App.Kill("bysoft.exe")
+App.Kill("excel.exe")
+
+
+Keyboard.Press("D", "press", ["Win"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+#icon("@res:jjeg1vs3-qcl1-5il3-buja-36erj7fg3fqi.png")
+Image.Click({"wnd":[{"cls":"Progman","title":"Program Manager","app":"explorer"}]},{"x":0,"y":0,"width":0,"height":0},@res"jjeg1vs3-qcl1-5il3-buja-36erj7fg3fqi.png",0.9,"left","dbclick",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+#icon("@res:5pi5a5vg-eg2j-dqh1-otgb-k0mfmtefhugh.png")
+Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"系统登录窗口(V2)"},{"cls":"Button","title":"确定(&D)","ctrlid":1007,"aaname":"确定(D)"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+#icon("@res:ha2hoq0a-dfft-3gqo-opas-p4rdg5uua2ha.png")
+Mouse.Action({"wnd":[{"app":"bysoft","cls":"#32770","title":"博优会员管理系统*"},{"cls":"Button","title":"确定","ctrlid":2,"aaname":"确定"}]},"left","click",5000,{"bContinueOnError":True,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+key = File.FileExists('''C:\Users\Administrator\Desktop\会员信息.XLS''')
+If key	
+	File.DeleteFile('''C:\Users\Administrator\Desktop\会员信息.XLS''')
+End If
+#icon("@res:dn58vh0g-4eng-l0pk-qfrp-d78k6rmn1hv0.png")
+Window.SetActive({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统V2*","app":"bysoft"}]})
+#icon("@res:6g0s8n59-vf9o-dh4p-cs00-f5fifi22a48o.png")
+Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"6g0s8n59-vf9o-dh4p-cs00-f5fifi22a48o.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+#icon("@res:p5c71vt2-29s1-l487-ahek-55ohpe59g7iu.png")
+Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"p5c71vt2-29s1-l487-ahek-55ohpe59g7iu.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+#icon("@res:nqk5r05b-56ad-poj9-5376-rph7kf1ujpgi.png")
+Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"nqk5r05b-56ad-poj9-5376-rph7kf1ujpgi.png",0.9,"right","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":100,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+Keyboard.Press("Up", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+Keyboard.Press("Up", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+#icon("@res:s999u4l8-ksvj-p344-5r09-fec9vor5jtki.png")
+Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWND390","title":"数据导出"},{"cls":"FNUDO390"},{"cls":"Button","title":"全导","ctrlid":1,"aaname":"全导"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+#icon("@res:vd2nrm9i-m30t-rtto-jo1e-h1cpkj6s2mfj.png")
+Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWND390","title":"数据导出"},{"cls":"Button","title":"下一步(&N)","ctrlid":1004,"aaname":"下一步(N)"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+#icon("@res:v45elj4g-chjj-ih1u-bvqq-ae1qdotm4lnl.png")
+Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWND390","title":"数据导出"},{"cls":"FNUDO390"},{"cls":"ComboBox","ctrlid":1009,"idx":1}],"ctrl":[{"role":"ROLE_SYSTEM_PUSHBUTTON","name":"打开"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+#icon("@res:3bt5a14u-6ql9-td0u-u1sc-kngn6an0cbbf.png")
+Mouse.Action({"wnd":[{"app":"bysoft","cls":"ComboLBox"}],"ctrl":[{"role":"ROLE_SYSTEM_LISTITEM","name":"EXCEL文件"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+#icon("@res:tfl2alt4-hbck-3g06-qpt1-sa9l0d89vv2k.png")
+Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWND390","title":"数据导出"},{"cls":"FNUDO390"},{"cls":"Button","title":"...","ctrlid":1002,"aaname":"..."}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+#icon("@res:n825q4kt-fqqq-58fn-chug-q6d0h6rtm2q4.png")
+Image.Click({"wnd":[{"cls":"#32770","title":"浏览文件夹","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"n825q4kt-fqqq-58fn-chug-q6d0h6rtm2q4.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+#icon("@res:rlt57neh-h6dn-a0t2-imj5-pjggpgfaauee.png")
+Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWND390","title":"数据导出"},{"cls":"FNUDO390"},{"cls":"Edit","ctrlid":1005}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},"会员信息",True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+#icon("@res:mmd5pvqc-k5vt-utk8-mbg9-ap0uf7nabtcc.png")
+Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWND390","title":"数据导出"},{"cls":"Button","title":"下一步(&N)","ctrlid":1004,"aaname":"下一步(N)"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+#icon("@res:drsmdqhq-3vj4-frg9-hhep-cghdd3v07vp1.png")
+Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWND390","title":"数据导出"},{"cls":"Button","title":"完成","ctrlid":1004,"aaname":"完成"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+Delay(20000)
+// If Not bRet
+
+#icon("@res:rjld8juu-n7aa-otjt-rf3l-erpcgb80j55h.png")
+// Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"#32770","title":"选择文件"},{"cls":"Edit","ctrlid":1152,"aaname":"文件名(N):"}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT","name":"文件名(N):"}]},"会员信息",True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+#icon("@res:ej1trust-mjit-oksu-qm9o-s7jh9087smr0.png")
+// Mouse.Action({"wnd":[{"app":"bysoft","cls":"#32770","title":"选择文件"},{"cls":"Button","title":"保存(&S)","ctrlid":1,"aaname":"保存(S)"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+// Else
+// Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+// Keyboard.Press("Esc", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+#icon("@res:p5c71vt2-29s1-l487-ahek-55ohpe59g7iu.png")
+// Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"p5c71vt2-29s1-l487-ahek-55ohpe59g7iu.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+
+// objExcelWorkBook = Excel.OpenExcel('''C:\Users\Administrator\Desktop\会员信息.XLS''',True,"Excel","","")
+// End If
+sTime = Time.Now()
+sTime = Time.Format(sTime,"hh:mm:ss")
+yxtime = "18:00:00"
+
+objDatab = Database.CreateDB("Sqlite3",{"filepath":@res"1.db"})
+iRet = Database.ExecuteSQL(objDatab ,"DROP TABLE IF EXISTS huiyuan", {"args":[]})
+table = Database.ExecuteSQL(objDatab ,"CREATE TABLE huiyuan (vipnum int,  money int);", {"args":[]})
+iRet = Database.ExecuteSQL(objDatab ,"DROP TABLE IF EXISTS huiyuan1", {"args":[]})
+iRet = Database.ExecuteSQL(objDatab ,"CREATE TABLE huiyuan1 (vipnum int,  pay int ,chong int,name string )", {"args":[]}) 
+
+
+//objExcelWorkBook1 = Excel.OpenExcel('''D:\rpa机器人\百纳\res\会员.XLS''',True,"Excel","","")
+Do
+	Try
+		#icon("@res:gumi93oa-qhb5-bv3g-tnti-3dfkq16o17nl.png")
+		//bRet = Image.Exists({"wnd":[{"cls":"#32770","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"gumi93oa-qhb5-bv3g-tnti-3dfkq16o17nl.png",0.9,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sMatchType":"GrayMatch"})
+		objExcelWorkBook1 = Excel.OpenExcel('''C:\Users\Administrator\Desktop\会员信息.xls''',True,"Excel","","")
+		//objExcelWorkBook1 = Excel.BindBook("会员信息.xls")
+	Catch non 
+		objExcelWorkBook1 =""
+	End Try
+	
+Loop While StrComp(objExcelWorkBook1,"",False)
+
+
+num = Excel.ReadColumn(objExcelWorkBook1,"会员信息","b2",False)
+huiyuanhead  = Excel.ReadRow(objExcelWorkBook1,"会员信息","A1",True)
+huiyuan = Excel.ReadRange(objExcelWorkBook1,"会员信息","A2",False)
+huiyuan = Datatable.BuildDataTable(huiyuan,huiyuanhead)
+huiyuan = Datatable.SelectDataTableColumns(huiyuan,["会员卡号","储值金额"])
+huiyuan = Datatable.GetDataTableByArray(huiyuan,False)
+Excel.CloseExcel(objExcelWorkBook1,False)
+
+item = pop(huiyuan)
+Log.info huiyuan
+mlen = UBound(huiyuan)
+
+If mlen>0
+	For Each value In huiyuan
+		If Len(value)>0
+			value[1]=Cstr(value[1]) 
+		End If	
+		// a123="insert into huiyuan (vipnum,money) values ('"&CStr(value[0])&"\','"&CStr(value[1])&"\')"
+		// iRet = Database.ExecuteSQL(objDatab ,a123, {"args":[]})
+	Next
+	iRet = Database.ExecuteBatchSQL(objDatab ,"insert into huiyuan (vipnum,money) values(?,?)", {"args":huiyuan})
+	
+	
+End If
+dTime = Time.Date()
+today = Time.Format(dTime,"yyyy-mm-dd")
+objExcelWorkBook = Excel.OpenExcel('''D:\储值消费表\'''&today&'''储值卡充值记录明细表（集团）.xls''',True,"Excel","","")
+//objExcelWorkBook = Excel.OpenExcel('''D:\储值消费表\2022-10-31储值卡充值记录明细表（集团）.xls''',True,"Excel","","")
+//objExcelWorkBook = Excel.BindBook(today&"储值卡充值记录明细表（集团）.xls")
+name = Excel.CurrentSheet(objExcelWorkBook,True)
+objRet = Excel.Find(objExcelWorkBook,name,"A1","卡号",False,False)
+head = Excel.ReadRow(objExcelWorkBook,name,objRet,True)
+arrRet = Unshift(head,"")
+arrayRet = Excel.ReadRange(objExcelWorkBook,name,"a8",False)
+For Each tm In arrayRet
+	tm[16] = Right(tm[16] ,8)	
+	tm[16] = Time.CDate(tm[16], "hh.mm.ss")
+Next
+
+Log.info arrayRet
+For i=0 To UBound(head )
+	If head[i]=""
+		head[i]=cstr(i)
+	End If
+Next
+
+
+Excel.CloseExcel(objExcelWorkBook,True)
+objDatatable = Datatable.BuildDataTable(arrayRet,head)
+objDatatable = Datatable.QueryDataTable(objDatatable,"~卡号.str.contains(\"酒店\") and 卡号!=\"\"")
+log.info objDatatable
+
+TracePrint (sTime>yxtime)
+If sTime>yxtime	
+	objDatatable = Datatable.QueryDataTable(objDatatable,"时间>2.5833333333333")
+	Log.info "下午" 
+Else
+	objDatatable = Datatable.QueryDataTable(objDatatable,"时间<=2.5833333333333")
+	log.info "上午"
+	
+End If 
+Log.info objDatatable
+arrayColumns = Datatable.GetColumns(objDatatable)
+
+// objDatatable = Datatable.SelectDataTableColumns(objDatatable,[arrayColumns[1],arrayColumns[8],arrayColumns[9]])
+
+objDatatable = Datatable.SelectDataTableColumns(objDatatable,["卡号","付款","冲调","姓名"])
+objDatatable = Datatable.GetDataTableByArray(objDatatable,False)
+
+For Each value In objDatatable
+	value[1]=CNumber(value[1])
+	value[2]=CNumber(value[2])
+Next
+
+iRet = Database.ExecuteBatchSQL(objDatab ,"insert into huiyuan1 (vipnum,pay,chong,name)values(?,?,?,?)", {"args":objDatatable})
+chongzhi = Database.QueryAll(objDatab ,"select a.vipnum,sum(a.pay+a.chong) money ,a.name from huiyuan1 a left join huiyuan b on a.vipnum =b.vipnum where a.vipnum  in (select vipnum from huiyuan) group by a.vipnum,a.name" ,{"rdict":False,"args": []})
+chongzhinew = Database.QueryAll(objDatab ,"select a.vipnum,sum(a.pay+a.chong) money  ,a.name from huiyuan1 a where a.vipnum  not in (select vipnum from huiyuan) group by a.vipnum,a.name"  ,{"rdict":False,"args": []})
+//已存在的会员
+For Each value In chongzhi
+	index=1
+	Try
+		a="select max(vipnum) from huiyuan where vipnum like \'"&CStr(value[0])&"%"&"\'"
+		index = Database.QueryOne(objDatab ,a, {"rdict":False,"args":[]})
+		Log.Info(index)
+		
+	Catch none
+		Log.info none
+	Else 
+		index = Split(index[0],"-")   
+		// index = Split("WX00078950","-")  
+		// Log.info len(index)
+		If Len(index)>1
+			index=index[1]
+		End If
+		Log.Info(index)
+		index = CInt(index)+1
+		Log.Info(index)
+	End Try
+	For i=index To (CInt((CNumber(value[1]) +500)/1000)-1+index)
+		#icon("@res:kdi0tfvd-d357-vrnn-efj5-0910404this8.png")
+		Window.SetActive({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]})
+		#icon("@res:fqc0o5p0-d1ri-o1hg-0mug-mtn9ds5arolo.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"fqc0o5p0-d1ri-o1hg-0mug-mtn9ds5arolo.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:000g07lk-vht1-nj86-8r1g-599o9pjbeo9n.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"000g07lk-vht1-nj86-8r1g-599o9pjbeo9n.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		// length =  4 - Len(CStr(CInt((CNumber(value[1])+500)/1000)))
+		str=value[0]
+		
+		// For j=0 To length - 1
+		// 	str=str&"0"
+		// Next
+		// str=str&CStr(i)
+		If i<10 And i>0
+			str=str&"-000"&CStr(i)
+		End If 
+		If i>= 10 And i<100
+			str =str&"-00"&CStr(i)
+		End If
+		If i>=100 And i<1000
+			str =str&"-0"&CStr(i)
+		End If 
+		If i>=1000
+			str =str&"-"&CStr(i)
+		End If
+		#icon("@res:u86dcrdm-2hgf-tnlt-s0le-113p4dta73tj.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"u86dcrdm-2hgf-tnlt-s0le-113p4dta73tj.png",0.9,"left","dbclick",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"TopRight","iCursorOffsetX":50,"iCursorOffsetY":10,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		Keyboard.Press("A", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		Keyboard.Input(str) ,{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"message"}
+		#icon("@res:39gp43ke-4lm8-ijva-kg4n-g7mrpm5faqpc.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"39gp43ke-4lm8-ijva-kg4n-g7mrpm5faqpc.png",0.9,"left","dbclick",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"TopRight","iCursorOffsetX":50,"iCursorOffsetY":10,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		
+		Keyboard.Press("A", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		suijishu = cstr(cint(816*Rnd()))
+		hname = INI.Read('''D:\rpa机器人\百纳\res\config\config.ini''', "百家姓", suijishu, "")
+		
+		Keyboard.Input(hname,{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"message"})
+		#icon("@res:ar8vhsf8-e6n6-j3ho-fce4-dfb3ie6va6o4.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"ar8vhsf8-e6n6-j3ho-fce4-dfb3ie6va6o4.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		Keyboard.Input("9999999999",{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"message"})
+		#icon("@res:hdlaf8na-ku7j-0abt-vugo-v152affknh3q.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"hdlaf8na-ku7j-0abt-vugo-v152affknh3q.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:152i6lhv-kbcg-57fm-ima6-8jjdfd2peprb.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"152i6lhv-kbcg-57fm-ima6-8jjdfd2peprb.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:niu9abtc-kppf-b6f1-86o9-gq64lqokjsdj.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"niu9abtc-kppf-b6f1-86o9-gq64lqokjsdj.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:ldgkl436-0mnr-vr4q-4jki-hnjo5ujsqaeh.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"ldgkl436-0mnr-vr4q-4jki-hnjo5ujsqaeh.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:psji2buq-ltih-lsv0-u2hf-hvhknb76m94e.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"psji2buq-ltih-lsv0-u2hf-hvhknb76m94e.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:6sbu4olp-vsdu-t1tb-k4cv-b9ijbedhvlpd.png")
+		Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"金卡操作"},{"cls":"PBTabControl32_90"},{"cls":"FNUDO390","title":"会员卡发行","aaname":"会员卡发行"},{"cls":"Edit","ctrlid":1022,"idx":1}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},str,True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+		Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		#icon("@res:qf254nbq-3ht8-34ev-b324-dsoq8r20pamm.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"金卡操作","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"qf254nbq-3ht8-34ev-b324-dsoq8r20pamm.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:n5k6k5ev-blg0-qciv-onfp-8sge4op5gqs3.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"#32770","title":"博优会员管理系统*"},{"cls":"Button","title":"确定","ctrlid":2,"aaname":"确定"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:lt7jmo8m-iake-jaop-mdue-1rop92tchl41.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"金卡操作"}],"ctrl":[{"role":"ROLE_SYSTEM_PUSHBUTTON","name":"关闭"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:2ms7nq33-a07d-m942-4ul2-26uqrhcckvi6.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统V2*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"2ms7nq33-a07d-m942-4ul2-26uqrhcckvi6.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:f1tbo04o-bj0g-ocpb-rql9-p1q1r28cuf8u.png")
+		Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"},{"cls":"PBTabControl32_90"},{"cls":"FNUDO390","title":"储值卡充值","aaname":"储值卡充值"},{"cls":"Edit","ctrlid":1018,"idx":2}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},str,True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+		Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		#icon("@res:qp6a505h-dmbg-tcgr-pf34-9k7vtvqqbqh6.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"},{"cls":"PBTabControl32_90"},{"cls":"FNUDO390","title":"储值卡充值","aaname":"储值卡充值"},{"cls":"ComboBox","ctrlid":1007}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:jhmbap6i-7a83-vuhh-j700-p73vtvmooe49.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"ComboLBox"}],"ctrl":[{"role":"ROLE_SYSTEM_LISTITEM","name":"27|微信支付"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":False,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		
+		If i=(CInt((CNumber(value[1]) +500)/1000)-1)
+			#icon("@res:vvurm9lj-c71i-671u-3rhu-0d30je0va43s.png")
+			Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"},{"cls":"PBTabControl32_90"},{"cls":"FNUDO390","title":"储值卡充值","aaname":"储值卡充值"},{"cls":"Edit","ctrlid":1014,"idx":1}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},value[1]-1000*i,True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+			
+		Else
+			
+			#icon("@res:vvurm9lj-c71i-671u-3rhu-0d30je0va43s.png")
+			Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"},{"cls":"PBTabControl32_90"},{"cls":"FNUDO390","title":"储值卡充值","aaname":"储值卡充值"},{"cls":"Edit","ctrlid":1014,"idx":1}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},"1000",True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+		End If 
+		#icon("@res:6j2oje6d-u9j7-quus-cllr-hm87o9o1743c.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"},{"cls":"Button","title":"确定(&O)","ctrlid":1000,"aaname":"确定(O)"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:32q0ij08-cntl-8iv8-dp8a-piisabq17qjs.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"#32770","title":"博优会员管理系统V2*"},{"cls":"Button","title":"确定","ctrlid":2,"aaname":"确定"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:q5rjce7b-qj37-p6eh-l6vk-3mkcmpiis2eo.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"}],"ctrl":[{"role":"ROLE_SYSTEM_PUSHBUTTON","name":"关闭"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:44tjo3i7-qjii-7o7m-9ii6-0suka649jate.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"44tjo3i7-qjii-7o7m-9ii6-0suka649jate.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		
+	Next
+	
+	
+Next
+//新会员录入
+For Each value In chongzhinew
+	For i=0 To (CInt((CNumber(value[1]) +500)/1000)-1)
+		#icon("@res:dms1tm45-ein1-4fvm-g7pk-foq53bcaf323.png")
+		Window.SetActive({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]})
+		#icon("@res:fqc0o5p0-d1ri-o1hg-0mug-mtn9ds5arolo.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"fqc0o5p0-d1ri-o1hg-0mug-mtn9ds5arolo.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:t56vp5jt-gra6-031q-p7ba-5h08le4ait8s.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"t56vp5jt-gra6-031q-p7ba-5h08le4ait8s.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		length =  4 - Len(CStr(CInt((CNumber(value[1])+500)/1000)))
+		str=value[0]
+		
+		If i<10 And i>0
+			str=str&"-000"&CStr(i)
+		End If 
+		If i>=10 And i<100
+			str =str&"-00"&CStr(i)
+		End If
+		If i>=100 And i<1000
+			str =str&"-0"&CStr(i)
+		End If 
+		If i>=1000
+			str =str&"-"&CStr(i)
+		End If
+		#icon("@res:u86dcrdm-2hgf-tnlt-s0le-113p4dta73tj.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"u86dcrdm-2hgf-tnlt-s0le-113p4dta73tj.png",0.9,"left","dbclick",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"TopRight","iCursorOffsetX":50,"iCursorOffsetY":10,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		Keyboard.Press("A", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		Keyboard.Input(str) ,{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"message"}
+		#icon("@res:39gp43ke-4lm8-ijva-kg4n-g7mrpm5faqpc.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"39gp43ke-4lm8-ijva-kg4n-g7mrpm5faqpc.png",0.9,"left","dbclick",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"TopRight","iCursorOffsetX":50,"iCursorOffsetY":10,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		
+		Keyboard.Press("A", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		suijishu = cstr(cint(816*Rnd()))
+		hname = INI.Read('''D:\rpa机器人\百纳\res\config\config.ini''', "百家姓", suijishu, "")
+		Keyboard.Input(hname,{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"message"})
+		#icon("@res:ar8vhsf8-e6n6-j3ho-fce4-dfb3ie6va6o4.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"ar8vhsf8-e6n6-j3ho-fce4-dfb3ie6va6o4.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:00vbdc4c-9seo-0m83-hpg6-8vs46b4tihpm.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"00vbdc4c-9seo-0m83-hpg6-8vs46b4tihpm.png",0.9,"left","dbclick",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"TopRight","iCursorOffsetX":20,"iCursorOffsetY":5,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		Keyboard.Input("9999999999",{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"message"})
+		#icon("@res:hdlaf8na-ku7j-0abt-vugo-v152affknh3q.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"hdlaf8na-ku7j-0abt-vugo-v152affknh3q.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:152i6lhv-kbcg-57fm-ima6-8jjdfd2peprb.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"会员档案卡片","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"152i6lhv-kbcg-57fm-ima6-8jjdfd2peprb.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:niu9abtc-kppf-b6f1-86o9-gq64lqokjsdj.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"niu9abtc-kppf-b6f1-86o9-gq64lqokjsdj.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:ldgkl436-0mnr-vr4q-4jki-hnjo5ujsqaeh.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"ldgkl436-0mnr-vr4q-4jki-hnjo5ujsqaeh.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:psji2buq-ltih-lsv0-u2hf-hvhknb76m94e.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"psji2buq-ltih-lsv0-u2hf-hvhknb76m94e.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:6sbu4olp-vsdu-t1tb-k4cv-b9ijbedhvlpd.png")
+		Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"金卡操作"},{"cls":"PBTabControl32_90"},{"cls":"FNUDO390","title":"会员卡发行","aaname":"会员卡发行"},{"cls":"Edit","ctrlid":1022,"idx":1}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},str,True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+		Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		#icon("@res:qf254nbq-3ht8-34ev-b324-dsoq8r20pamm.png")
+		Image.Click({"wnd":[{"cls":"FNWNS390","title":"金卡操作","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"qf254nbq-3ht8-34ev-b324-dsoq8r20pamm.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:n5k6k5ev-blg0-qciv-onfp-8sge4op5gqs3.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"#32770","title":"博优会员管理系统*"},{"cls":"Button","title":"确定","ctrlid":2,"aaname":"确定"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:lt7jmo8m-iake-jaop-mdue-1rop92tchl41.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"金卡操作"}],"ctrl":[{"role":"ROLE_SYSTEM_PUSHBUTTON","name":"关闭"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:2ms7nq33-a07d-m942-4ul2-26uqrhcckvi6.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统V2*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"2ms7nq33-a07d-m942-4ul2-26uqrhcckvi6.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		#icon("@res:f1tbo04o-bj0g-ocpb-rql9-p1q1r28cuf8u.png")
+		Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"},{"cls":"PBTabControl32_90"},{"cls":"FNUDO390","title":"储值卡充值","aaname":"储值卡充值"},{"cls":"Edit","ctrlid":1018,"idx":2}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},str,True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+		Keyboard.Press("Enter", "press", [],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		#icon("@res:qp6a505h-dmbg-tcgr-pf34-9k7vtvqqbqh6.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"},{"cls":"PBTabControl32_90"},{"cls":"FNUDO390","title":"储值卡充值","aaname":"储值卡充值"},{"cls":"ComboBox","ctrlid":1007}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:jhmbap6i-7a83-vuhh-j700-p73vtvmooe49.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"ComboLBox"}],"ctrl":[{"role":"ROLE_SYSTEM_LISTITEM","name":"27|微信支付"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":False,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		
+		If i=(CInt((CNumber(value[1]) +500)/1000)-1)
+			#icon("@res:vvurm9lj-c71i-671u-3rhu-0d30je0va43s.png")
+			Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"},{"cls":"PBTabControl32_90"},{"cls":"FNUDO390","title":"储值卡充值","aaname":"储值卡充值"},{"cls":"Edit","ctrlid":1014,"idx":1}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},value[1]-1000*i,True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+			
+		Else
+			
+			#icon("@res:vvurm9lj-c71i-671u-3rhu-0d30je0va43s.png")
+			Keyboard.InputText({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"},{"cls":"PBTabControl32_90"},{"cls":"FNUDO390","title":"储值卡充值","aaname":"储值卡充值"},{"cls":"Edit","ctrlid":1014,"idx":1}],"ctrl":[{"role":"ROLE_SYSTEM_TEXT"}]},"1000",True,20,10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":500,"bSetForeground":True,"sSimulate":"message","bValidate":False,"bClickBeforeInput":False})
+		End If 
+		#icon("@res:6j2oje6d-u9j7-quus-cllr-hm87o9o1743c.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"},{"cls":"Button","title":"确定(&O)","ctrlid":1000,"aaname":"确定(O)"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:32q0ij08-cntl-8iv8-dp8a-piisabq17qjs.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"#32770","title":"博优会员管理系统V2*"},{"cls":"Button","title":"确定","ctrlid":2,"aaname":"确定"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:q5rjce7b-qj37-p6eh-l6vk-3mkcmpiis2eo.png")
+		Mouse.Action({"wnd":[{"app":"bysoft","cls":"FNWNS390","title":"储值卡充值--储卡充值"}],"ctrl":[{"role":"ROLE_SYSTEM_PUSHBUTTON","name":"关闭"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		#icon("@res:44tjo3i7-qjii-7o7m-9ii6-0suka649jate.png")
+		Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"44tjo3i7-qjii-7o7m-9ii6-0suka649jate.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+		
+	Next
+Next
+#icon("@res:eq65stu8-ogmg-qc2j-vitd-dcu9q0rj65kq.png")
+Image.Click({"wnd":[{"cls":"FNWND390","title":"博优会员管理系统V2*","app":"bysoft"}]},{"x":0,"y":0,"width":0,"height":0},@res"eq65stu8-ogmg-qc2j-vitd-dcu9q0rj65kq.png",0.9,"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","sMatchType":"GrayMatch","iSerialNo":1})
+log.info "离开" & $Block.Description
+
+// value = cint(1500/1000)
+
+
+
+
+
+
+
